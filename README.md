@@ -13,6 +13,7 @@ It is implemented in **Golang** and consists of:
 
 ## Project Structure
 
+```
 govwallet-redemption/
 ├─ cmd/
 │  └─ main.go
@@ -27,6 +28,7 @@ govwallet-redemption/
 │  └─ redemption_service_test.go
 ├─ go.mod
 └─ README.md
+```
 
 ---
 
@@ -112,7 +114,7 @@ Assumptions / Notes
 
 -   Redemption data is stored in `redemptions.json` as:
 
-json
+```json
 
 [
   {
@@ -120,12 +122,14 @@ json
     "redeemed_at": 1677744000000
   }
 ]
+```
 
 -   Staff data is stored in CSV format with headers:
 
-text
+```text
 
 staff_pass_id,team_name,created_at
+```
 
 -   `created_at` is in epoch milliseconds. For unit tests, it is set to `0` for simplicity.
 
