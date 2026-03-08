@@ -13,23 +13,20 @@ It is implemented in **Golang** and consists of:
 
 ## Project Structure
 
-govwallet-redemption/\
-│\
-├─ cmd/\
-│ └─ main.go # CLI entry point\
-├─ internal/\
-│ ├─ model/ # Data models (Staff, Redemption)\
-│ ├─ repository/ # Data access logic\
-│ └─ service/ # Business logic (RedemptionService)\
-├─ data/\
-│ ├─ staff_mapping.csv # Sample staff data\
-│ └─ redemptions.json # Redemption records (empty initially)\
-├─ tests/\
-│ └─ redemption_service_test.go # Unit tests\
-├─ go.mod\
+govwallet-redemption/
+├─ cmd/
+│  └─ main.go
+├─ internal/
+│  ├─ model/
+│  ├─ repository/
+│  └─ service/
+├─ data/
+│  ├─ staff_mapping.csv
+│  └─ redemptions.json
+├─ tests/
+│  └─ redemption_service_test.go
+├─ go.mod
 └─ README.md
-
-text
 
 ---
 
@@ -43,61 +40,62 @@ text
 ## How to Run CLI
 
 1. Open terminal or PowerShell in the project root.
+
 2. Make sure `data/staff_mapping.csv` exists and has sample staff IDs:
 
 ```csv
 staff_pass_id,team_name,created_at
 S1,TeamA,1677744000000
 S2,TeamB,1677744000000
+```
 
-1.  Run the CLI with a staff pass ID:
+3. Run the CLI with a staff pass ID:
 
-bash
-
+```bash
 go run ./cmd/main.go <staff_pass_id>
+```
 
 Example:
 
-bash
-
+```bash
 go run ./cmd/main.go S1
+```
 
 Output if successful:
 
-text
-
+```text
 Redemption successful for team TeamA!
+```
 
 Output if the team already redeemed:
 
-text
-
+```text
 Redemption failed: team already redeemed
+```
 
 Output if staff pass ID is not found:
 
-text
-
+```text
 Redemption failed: staff pass ID not found
+```
 
-* * * * *
+---
 
-How to Run Unit Tests
----------------------
+## How to Run Unit Tests
 
 From the project root, run:
 
-bash
-
+```bash
 go test ./...
+```
 
-This runs all automated unit tests in `tests/`.
+This runs all automated unit tests in `tests/`.
 
 Expected output if all tests pass:
 
-text
-
+```text
 ok      govwallet-redemption/tests 0.652s
+```
 
 The tests cover:
 
