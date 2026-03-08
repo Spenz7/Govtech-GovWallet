@@ -8,14 +8,24 @@ import (
 )
 
 func setup() *service.RedemptionService {
+    // Ensure the data folder exists
+    os.MkdirAll("data", os.ModePerm)
+
     // Create temporary CSV file
     csvFile := "data/test_staff.csv"
     os.WriteFile(csvFile, []byte("staff_pass_id,team_name,created_at\nS1,TeamA,0\nS2,TeamB,0"), 0644)
-    staffRepo, _ := repository.NewStaffRepository(csvFile)
+
+    staffRepo, err := repository.NewStaffRepository(csvFile)
+    if err != nil {
+        panic("failed to load staff repository: " + err.Error())
+    }
 
     jsonFile := "data/test_redemptions.json"
     os.WriteFile(jsonFile, []byte("[]"), 0644)
-    redemptionRepo, _ := repository.NewRedemptionRepository(jsonFile)
+    redemptionRepo, err := repository.NewRedemptionRepository(jsonFile)
+    if err != nil {
+        panic("failed to load redemption repository: " + err.Error())
+    }
 
     return service.NewRedemptionService(staffRepo, redemptionRepo)
 }
