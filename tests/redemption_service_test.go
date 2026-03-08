@@ -1,7 +1,6 @@
 package tests
 
 import (
-    "govwallet-redemption/internal/model"
     "govwallet-redemption/internal/repository"
     "govwallet-redemption/internal/service"
     "testing"
