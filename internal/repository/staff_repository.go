@@ -5,7 +5,6 @@ import (
     "errors"
     "os"
     "strconv"
-    "govwallet-redemption/internal/model"
 )
 
 type StaffRepository struct {
